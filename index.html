@@ -26,10 +26,9 @@
   .rir-places { }
   @media (max-width: 900px) { .rir-places { flex-direction: column; } .rir-places > div { flex-basis: auto; } }
   @media (max-width: 680px) {
-    .rir-logo-corner { justify-content: center; order:-1; }
+    .rir-logo-corner { position:static !important; transform:none !important; margin:0 auto 6px !important; justify-content:center; }
     .rir-logo-corner img { height: 44px !important; }
-    .rir-logo-spacer { display:none !important; }
-    .rir-nav { padding: 10px 16px !important; gap: 10px !important; grid-template-columns: 1fr !important; justify-items:center; }
+    .rir-nav { padding: 10px 16px !important; gap: 10px !important; flex-direction:column; }
     .rir-navlinks { gap: 12px 18px !important; }
     .rir-navlinks a { font-size: 11.5px !important; }
     .rir-lace { width: 22px !important; opacity: 0.6 !important; }
@@ -105,17 +104,16 @@
   </sc-if>
 
   <!-- NAV -->
-  <div style="position:sticky; top:0; z-index:50; background:color-mix(in oklch, var(--ivory) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);">
-    <div class="rir-nav" style="max-width:1180px; margin:0 auto; padding:10px 28px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px;">
-      <div onClick="{{goHome}}" style="cursor:pointer; display:flex; align-items:center;" class="rir-logo-corner">
-        <img src="assets/monogram.png" alt="Emma &amp; Andrew" style="height:74px; display:block; margin:-7px 0;">
-      </div>
+  <div style="position:sticky; top:0; z-index:50; background:color-mix(in oklch, var(--ivory) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); position:relative;">
+    <div onClick="{{goHome}}" style="cursor:pointer; position:absolute; left:24px; top:50%; transform:translateY(-50%); display:flex; align-items:center; z-index:2;" class="rir-logo-corner">
+      <img src="assets/monogram.png" alt="Emma &amp; Andrew" style="height:74px; display:block;">
+    </div>
+    <div class="rir-nav" style="max-width:1180px; margin:0 auto; padding:10px 28px; display:flex; align-items:center; justify-content:center;">
       <div class="rir-navlinks" style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center;">
         <sc-for list="{{navItems}}" as="item" hint-placeholder-count="7">
           <a onClick="{{item.onClick}}" style="cursor:pointer; font-size:12.5px; letter-spacing:0.09em; text-transform:uppercase; font-weight:400; color:var(--ink-soft); padding-bottom:3px; border-bottom:1px solid transparent; white-space:nowrap;" style-hover="color:var(--sage-deep)">{{item.label}}</a>
         </sc-for>
       </div>
-      <div style="width:74px;" class="rir-logo-spacer"></div>
     </div>
   </div>
 
